@@ -1,0 +1,30 @@
+<div *ngIf="!loginDisplay">
+    <p class="welcome">
+        <p>Please sign-in to see your profile information.</p>
+</div>
+
+<div *ngIf="loginDisplay">
+    <p>Login successful!</p>
+</div>
+<!-- <header class="head">
+    <h1>Chat GPT Based Automation Tool</h1>
+  </header> -->
+<form #userForm="ngForm" class="n1">
+    
+            
+            <div class="site-logo">
+                <img src="assets/edifylogo.jpg" alt="logo">
+                <div class="about-section">
+                    <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><b>About The Tool</b></h1>
+            <b><p>Introducing Chat GPT based AI Automation Tool:the intelligent automation tool powered by ChatGPT.</p>
+            <p>Generate automation scripts effortlesly through conversational interactions, Streamline tasks,save time,and unleash your productivity.</p>
+                <p>Seamlessly integerate and collaborate.Continously learning ensures and refined scripts.Experience the future of automation with ChatScripter AI.</p>
+            <p>The tool also provides ability to create automation script by anyone who never worked in automation scripting before.</p></b></div>
+      </div><br>
+
+      <button  mat-button (click)="handleClick()">Start Automate your Web/Mobile Application</button>
+
+
+
+
+

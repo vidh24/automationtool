@@ -1,0 +1,10 @@
+.toolbar-spacer {
+    flex: 1 1 auto;
+  }
+  
+  a.title {
+    color: white;
+  }
+  .mat-toolbar.mat-primary {
+    background: #b9123f;
+    color: #fff;}

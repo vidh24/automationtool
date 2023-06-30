@@ -1,0 +1,107 @@
+<html>
+  <head></head>
+<body>
+  <div class="w3-container" style="overflow-x: hidden;overflow-y: hidden;">
+    <form #userinput="ngForm">
+      <div class="form-group">
+        <header class="head">
+          <h1>Automation Script Generator</h1>
+        </header>
+        <label for="name">Test Steps:</label><br>
+        <textarea id="w3review" name="w3review" row=1 cols="25">Login Page</textarea>
+        <br>
+        <div style="float:left; width: 83%;">
+          <div style="float:left;width:30%">
+       <select class="dropdown" placeholder="Action Type" [(ngModel)]="selectedValue1" name="dropdown1" required
+              (change)="updateOptions2()">
+              <option value="">Action Type</option>
+              <option value="Navigate">Navigate</option>
+              <option value="click">click </option>
+              <option value="sendkey">sendkey</option>
+              <option value="doubleclick">doubleclick</option>
+              <option value="dragdrop">dragdrop</option>
+              <option value="gettext">gettext</option>
+            </select>
+
+            <!-- <select class="dropdown" placeholder="Action Type" [(ngModel)]="firstdropdownValue"
+              (change)="onFirstDropdownChange()" name="dropdown1" required>
+              <option *ngFor="let option of firstdropdownOptions" [value]="option">{{ option }}</option>
+            </select> -->
+
+          </div>
+          <div style="float:right;width:70%  ; ">
+            <input type="text" [(ngModel)]="inputText" [ngModelOptions]="{standalone: true}" name="textbox" class="textbox" placeholder="Enter text" required
+              #myInput="ngModel" [disabled]="!selectedValue1 && !selectedValue2" />
+            <!-- <input type="text" [(ngModel)]="linktext" name="textbox" class="textbox" placeholder="Enter text" required
+              #myInput="ngModel"> -->
+            <div *ngIf="myInput.invalid && (myInput.dirty || myInput.touched)" class="error-message">
+              This field is required.
+
+            </div>
+          </div>
+        </div><br><br>
+        <div style="float:right;width:36% ; position: absolute;
+        top: 100px;
+        left: 800px;" *ngIf="showTextBox">
+          <label style="padding: 20px;
+          margin: 82px;">Test Scenario</label>
+          <textarea rows="5" cols="50" placeholder="Enter text..." class="order-steps-textarea" name="textarea"
+          [value]="textareaContent"></textarea>
+              <div class="popup" *ngIf="showPopup">
+                <div class="popup-content">
+                  <div *ngIf="loading" class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Please wait...</p>
+                  </div>
+              
+                  <div *ngIf="!loading">
+                    <!-- Display the generated code or other content -->
+                    
+                      <textarea class="order-steps-textarea"  name="textarea"  [(ngModel)]="generatedCode" [ngModelOptions]="{standalone: true}" >
+                      </textarea>
+                      <div style="float:left;width:100%" >
+                      <button class="btn2"(click)="clearContent()">Clear</button>
+                      <button class="btn2"(click)="saveContent()">Copy Script</button>
+                      <button class="btn2"(click)="closePopup()">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <br>
+
+        <select [(ngModel)]="selectedValue2" class="dropdown1"
+          *ngIf="selectedValue1 === 'click' || selectedValue1 === 'sendkey' ||selectedValue1 === 'doubleclick' ||selectedValue1 === 'dragdrop' ||selectedValue1 === 'gettext' "
+          name="iden">
+          <option value="">Identifier</option>
+          <option *ngFor="let option of options2" [value]="option">{{ option }}</option>
+        </select>
+      
+        <button matbutton class="btn1" type="submit" (click)="onSubmit()"
+          [disabled]="!userinput.valid || condition">Submit</button>
+        <br>
+     
+        <select [(ngModel)]="selectedLanguage" class="la"  [ngModelOptions]="{standalone:true}">
+          <option value="" disabled>Select a language</option>
+          <option value="python">Python</option>
+          <option value="java">Java</option>
+          <option value="javascript">JavaScript</option>
+        </select>
+        <button class="btn" matbutton (click)="generateCode()" >Generate Code</button>
+        <!-- <textarea [(ngModel)]="textareaContent" *ngIf="showCodeSnippet" rows="6" [readonly]="true" [ngModelOptions]="{standalone:true}">{{textareaContent}}</textarea> -->
+        <!-- <div *ngIf="generatedCode">
+          Generated Code:
+          <textarea [(ngModel)]="generatedCode" [ngModelOptions]="{standalone:true}"rows="6" [readonly]="true"></textarea>        </div> -->
+
+        <!-- <button class="btn" matbutton ngsubmit>GenrateCode</button><br> -->
+        <!-- <div>{{generatecode  }}</div> -->
+
+      </div>
+
+    
+    </form>
+  </div>
+</body>
+
+</html>
